@@ -1,7 +1,7 @@
 react-native-sensor-manager
 ============================
 
-Wrapper for react-native. Accelerometer, Gyroscope, Magnetometer, Step Counter, Thermometer are supporter for now.
+Wrapper for react-native. Accelerometer, Gyroscope, Magnetometer, Step Counter, Thermometer are supported for now.
 
 ### Add it to your project
 
@@ -111,12 +111,13 @@ DeviceEventEmitter.addListener('gyrData', function (data) {
   * data.z
   **/
 });
-mSensorManager.startGyroscope();
+mSensorManager.startGyroscope(100);
 mSensorManager.stopGyroscope();
 ```
 
 ### Magnetomer
 ```js
+mSensorManager.startMagnetometer(100);
 DeviceEventEmitter.addListener('magData', function (data) {
   /**
   * data.x
@@ -124,28 +125,27 @@ DeviceEventEmitter.addListener('magData', function (data) {
   * data.z
   **/
 });
-mSensorManager.startMagnetometer();
 mSensorManager.stopMagnetometer();
 ```
 
 ### Step Counter
 ```js
+mSensorManager.startStepCounter(1000);
 DeviceEventEmitter.addListener('stepData', function (data) {
   /**
   * data.steps
   **/
 });
-mSensorManager.startStepCounter();
 mSensorManager.stopStepCounter();
 ```
 
 ### Thermometer
 ```js
+mSensorManager.startThermometer(1000);
 DeviceEventEmitter.addListener('tempData', function (data) {
   /**
   * data.temp
   **/
 });
-mSensorManager.startThermometer();
 mSensorManager.stopThermometer();
 ```
