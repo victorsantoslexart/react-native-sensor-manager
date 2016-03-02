@@ -124,7 +124,7 @@ DeviceEventEmitter.addListener('magData', function (data) {
   * data.z
   **/
 });
-mSensorManager.startMagnetometer(); // you'll start getting AccelerationData events above
+mSensorManager.startMagnetometer();
 mSensorManager.stopMagnetometer();
 ```
 
@@ -135,7 +135,7 @@ DeviceEventEmitter.addListener('stepData', function (data) {
   * data.steps
   **/
 });
-mSensorManager.startStepCounter(); // you'll start getting AccelerationData events above
+mSensorManager.startStepCounter();
 mSensorManager.stopStepCounter();
 ```
 
@@ -146,6 +146,6 @@ DeviceEventEmitter.addListener('tempData', function (data) {
   * data.temp
   **/
 });
-mSensorManager.startThermometer(); // you'll start getting AccelerationData events above
+mSensorManager.startThermometer();
 mSensorManager.stopThermometer();
 ```
