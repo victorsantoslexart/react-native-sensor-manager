@@ -66,7 +66,7 @@ public class MagnetometerRecord implements SensorEventListener {
 				map.putDouble("x", sensorEvent.values[0]);
 				map.putDouble("y", sensorEvent.values[1]);
 				map.putDouble("z", sensorEvent.values[2]);
-				sendEvent("magValue", map);
+				sendEvent("magData", map);
                 lastUpdate = curTime;
             }
         }

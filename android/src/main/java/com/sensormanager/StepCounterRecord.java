@@ -64,7 +64,7 @@ public class StepCounterRecord implements SensorEventListener {
             if ((curTime - lastUpdate) > delay) {
                 i = 0;
 				map.putDouble("steps", sensorEvent.values[0]);
-				sendEvent("StepCount", map);
+				sendEvent("stepData", map);
                 lastUpdate = curTime;
             }
         }
