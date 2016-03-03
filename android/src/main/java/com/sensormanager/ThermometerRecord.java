@@ -64,7 +64,7 @@ public class ThermometerRecord implements SensorEventListener {
             if ((curTime - lastUpdate) > delay) {
                 i = 0;
 				map.putDouble("temp", sensorEvent.values[0]);
-				sendEvent("tempData", map);
+				sendEvent("Thermometer", map);
                 lastUpdate = curTime;
             }
         }

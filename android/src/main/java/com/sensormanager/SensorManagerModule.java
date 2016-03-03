@@ -16,6 +16,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 	private MagnetometerRecord		mMagnetometerRecord;
 	private StepCounterRecord		mStepCounterRecord;
 	private ThermometerRecord		mThermometer;
+	private MotionValueRecord		mMotionValue;
 
 	private ReactApplicationContext	mReactContext;
 
@@ -78,6 +79,17 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
     public void stopThermometer() {
 		mThermometer.stop();
     }
+
+    @ReactMethod
+    public void startMotionValue(int delay) {
+    	mMotionValue = new MotionValueRecord(mReactContext, delay);
+    }
+
+    @ReactMethod
+    public void stopMotionValue() {
+		mMotionValue.stop();
+    }
+
 
 	/*
     @Override

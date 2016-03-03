@@ -92,7 +92,7 @@ var mSensorManager = require('NativeModules').SensorManager;
 ### Accelerometer
 ```js
 mSensorManager.startAccelerometer(100); // To start the accelerometer with a minimum delay of 100ms between events.
-DeviceEventEmitter.addListener('accValue', function (data) {
+DeviceEventEmitter.addListener('Accelerometer', function (data) {
   /**
   * data.x
   * data.y
@@ -104,7 +104,7 @@ mSensorManager.stopAccelerometer();
 
 ### Gyroscope
 ```js
-DeviceEventEmitter.addListener('gyrData', function (data) {
+DeviceEventEmitter.addListener('Gyroscope', function (data) {
   /**
   * data.x
   * data.y
@@ -115,10 +115,10 @@ mSensorManager.startGyroscope(100);
 mSensorManager.stopGyroscope();
 ```
 
-### Magnetomer
+### Magnetometer
 ```js
 mSensorManager.startMagnetometer(100);
-DeviceEventEmitter.addListener('magData', function (data) {
+DeviceEventEmitter.addListener('Magnetometer', function (data) {
   /**
   * data.x
   * data.y
@@ -131,7 +131,7 @@ mSensorManager.stopMagnetometer();
 ### Step Counter
 ```js
 mSensorManager.startStepCounter(1000);
-DeviceEventEmitter.addListener('stepData', function (data) {
+DeviceEventEmitter.addListener('StepCounter', function (data) {
   /**
   * data.steps
   **/
@@ -142,7 +142,7 @@ mSensorManager.stopStepCounter();
 ### Thermometer
 ```js
 mSensorManager.startThermometer(1000);
-DeviceEventEmitter.addListener('tempData', function (data) {
+DeviceEventEmitter.addListener('Thermometer', function (data) {
   /**
   * data.temp
   **/

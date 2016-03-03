@@ -18,19 +18,25 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 
-public class AccelerometerRecord implements SensorEventListener {
+
+public class MotionValueRecord implements SensorEventListener {
+    private static final int ARRAY_SIZE = 100;
 
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private long lastUpdate = 0;
     private int i = 0, n = 0;
+    private float motionValue = 0;
+    private float currentValue = 0;
+    private float x = 0, y = 0, z = 0;
 	private int delay;
 
 	private ReactContext mReactContext;
 	private Arguments mArguments;
 
+    Timer t = new Timer();
 
-    public AccelerometerRecord(ReactApplicationContext reactContext, int delay) {
+    public MotionValueRecord(ReactApplicationContext reactContext, int delay) {
 		this.delay = delay;
         mSensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -59,14 +65,22 @@ public class AccelerometerRecord implements SensorEventListener {
 		WritableMap map = mArguments.createMap();
 
         if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+
+            currentValue += (Math.pow(sensorEvent.values[0] - x, 2)
+                    + Math.pow(sensorEvent.values[1] - y, 2)
+                    + Math.pow(sensorEvent.values[2] - z, 2));
+            x = sensorEvent.values[0];
+            y = sensorEvent.values[1];
+            z = sensorEvent.values[2];
+
             long curTime = System.currentTimeMillis();
             i++;
             if ((curTime - lastUpdate) > delay) {
                 i = 0;
-				map.putDouble("x", sensorEvent.values[0]);
-				map.putDouble("y", sensorEvent.values[1]);
-				map.putDouble("z", sensorEvent.values[2]);
-				sendEvent("Accelerometer", map);
+				map.putDouble("value", currentValue);
+				sendEvent("MotionValue", map);
+                motionValue = currentValue;
+                currentValue = 0;
                 lastUpdate = curTime;
             }
         }
