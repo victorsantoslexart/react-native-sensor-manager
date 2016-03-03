@@ -12,10 +12,13 @@
   },
   "keywords": [
     "react-native",
+    "android",
     "react-native-sensor-manager",
     "accelerometer",
     "gyroscope",
-    "magnetometer"
+    "magnetometer",
+	"thermometer",
+	"step-counter"
   ],
   "author": "Kevin Primicerio <kevin.primicerio@gmail.com>",
   "license": "ISC",
