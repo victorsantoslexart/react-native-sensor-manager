@@ -3,7 +3,8 @@ react-native-sensor-manager
 
 Wrapper for react-native. Accelerometer, Gyroscope, Magnetometer, Step Counter, Thermometer are supported for now.
 
-## Add it to your project
+Add it to your project
+-------------------------
 
 `$ npm i react-native-sensor-manager --save`
 

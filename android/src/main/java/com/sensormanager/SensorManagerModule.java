@@ -15,8 +15,8 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 	private GyroscopeRecord 		mGyroscopeRecord;
 	private MagnetometerRecord		mMagnetometerRecord;
 	private StepCounterRecord		mStepCounterRecord;
-	private ThermometerRecord		mThermometer;
-	private MotionValueRecord		mMotionValue;
+	private ThermometerRecord		mThermometerRecord;
+	private MotionValueRecord		mMotionValueRecord;
 
 	private ReactApplicationContext	mReactContext;
 
@@ -47,7 +47,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void stopGyroscope() {
-		mAccelerometerRecord.stop();
+		mGyroscopeRecord.stop();
     }
 
     @ReactMethod
@@ -72,22 +72,22 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void startThermometer(int delay) {
-    	mThermometer = new ThermometerRecord(mReactContext, delay);
+    	mThermometerRecord = new ThermometerRecord(mReactContext, delay);
     }
 
     @ReactMethod
     public void stopThermometer() {
-		mThermometer.stop();
+		mThermometerRecord.stop();
     }
 
     @ReactMethod
     public void startMotionValue(int delay) {
-    	mMotionValue = new MotionValueRecord(mReactContext, delay);
+    	mMotionValueRecord = new MotionValueRecord(mReactContext, delay);
     }
 
     @ReactMethod
     public void stopMotionValue() {
-		mMotionValue.stop();
+		mMotionValueRecord.stop();
     }
 
 
