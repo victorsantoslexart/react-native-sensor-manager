@@ -57,7 +57,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void stopMagnetometer() {
-		mAccelerometerRecord.stop();
+		mMagnetometerRecord.stop();
     }
 
     @ReactMethod
