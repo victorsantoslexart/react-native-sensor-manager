@@ -51,8 +51,9 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void startMagnetometer(int delay) {
-    	mMagnetometerRecord = new MagnetometerRecord(mReactContext, delay);
+    public int startMagnetometer(int delay) {
+    	mMagnetometerRecord = new MagnetometerRecord(mReactContext);
+		return (mMagnetometerRecord.start(delay));
     }
 
     @ReactMethod
@@ -71,8 +72,9 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void startThermometer(int delay) {
-    	mThermometerRecord = new ThermometerRecord(mReactContext, delay);
+    public int startThermometer(int delay) {
+    	mThermometerRecord = new ThermometerRecord(mReactContext);
+		return (mThermometerRecord.start(delay));
     }
 
     @ReactMethod

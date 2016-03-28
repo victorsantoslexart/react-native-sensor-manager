@@ -30,13 +30,20 @@ public class ThermometerRecord implements SensorEventListener {
 	private Arguments mArguments;
 
 
-    public ThermometerRecord(ReactApplicationContext reactContext, int delay) {
-		this.delay = delay;
+    public ThermometerRecord(ReactApplicationContext reactContext) {
         mSensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
-        mThermometer = mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
-        mSensorManager.registerListener(this, mThermometer, SensorManager.SENSOR_DELAY_FASTEST);
 		mReactContext = reactContext;
     }
+
+	public int start(int delay) {
+		this.delay = delay;
+        if ((mThermometer = mSensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE)) != null) {
+			mSensorManager.registerListener(this, mThermometer, SensorManager.SENSOR_DELAY_FASTEST);
+		} else {
+			return (0);
+		}
+		return (1);
+	}
 
     public void stop() {
         mSensorManager.unregisterListener(this);

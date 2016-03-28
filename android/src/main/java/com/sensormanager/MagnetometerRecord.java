@@ -30,13 +30,20 @@ public class MagnetometerRecord implements SensorEventListener {
 	private Arguments mArguments;
 
 
-    public MagnetometerRecord(ReactApplicationContext reactContext, int delay) {
-		this.delay = delay;
+    public MagnetometerRecord(ReactApplicationContext reactContext) {
         mSensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
-        mMagnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-        mSensorManager.registerListener(this, mMagnetometer, SensorManager.SENSOR_DELAY_FASTEST);
 		mReactContext = reactContext;
     }
+
+	public int start(int delay) {
+		this.delay = delay;
+		if ((mMagnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)) != null) {
+			mSensorManager.registerListener(this, mMagnetometer, SensorManager.SENSOR_DELAY_FASTEST);
+		} else {
+			return (0);
+		}
+		return (1);
+	}
 
     public void stop() {
         mSensorManager.unregisterListener(this);
