@@ -17,6 +17,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 	private StepCounterRecord		mStepCounterRecord;
 	private ThermometerRecord		mThermometerRecord;
 	private MotionValueRecord		mMotionValueRecord;
+	private ProximityRecord			mProximityRecord;
 
 	private ReactApplicationContext	mReactContext;
 
@@ -96,6 +97,16 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 		mMotionValueRecord.stop();
     }
 
+    @ReactMethod
+    public int startProximity(int delay) {
+    	mProximityRecord = new ProximityRecord(mReactContext);
+		return (mProximityRecord.start(delay));
+    }
+
+    @ReactMethod
+    public void stopProximity() {
+		mProximityRecord.stop();
+    }
 
 	/*
     @Override
