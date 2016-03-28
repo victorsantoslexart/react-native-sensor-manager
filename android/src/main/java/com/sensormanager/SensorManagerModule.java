@@ -11,12 +11,12 @@ import android.util.Log;
 
 public class SensorManagerModule extends ReactContextBaseJavaModule {
     private static final String		REACT_CLASS = "SensorManager";
-    private AccelerometerRecord		mAccelerometerRecord;
-	private GyroscopeRecord 		mGyroscopeRecord;
-	private MagnetometerRecord		mMagnetometerRecord;
-	private StepCounterRecord		mStepCounterRecord;
-	private ThermometerRecord		mThermometerRecord;
-	private MotionValueRecord		mMotionValueRecord;
+    private AccelerometerRecord		mAccelerometerRecord = null;
+	private GyroscopeRecord 		mGyroscopeRecord = null;
+	private MagnetometerRecord		mMagnetometerRecord = null;
+	private StepCounterRecord		mStepCounterRecord = null;
+	private ThermometerRecord		mThermometerRecord = null;
+	private MotionValueRecord		mMotionValueRecord = null;
 
 	private ReactApplicationContext	mReactContext;
 
@@ -32,68 +32,80 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public int startAccelerometer(int delay) {
-    	mAccelerometerRecord = new AccelerometerRecord(mReactContext);
+		if (mAccelerometerRecord == null)
+			mAccelerometerRecord = new AccelerometerRecord(mReactContext);
 		return (mAccelerometerRecord.start(delay));
     }
 
     @ReactMethod
     public void stopAccelerometer() {
-		mAccelerometerRecord.stop();
+		if (mAccelerometerRecord == null)
+			mAccelerometerRecord.stop();
     }
 
     @ReactMethod
     public int startGyroscope(int delay) {
-    	mGyroscopeRecord = new GyroscopeRecord(mReactContext);
+		if (mGyroscopeRecord == null)
+			mGyroscopeRecord = new GyroscopeRecord(mReactContext);
 		return (mGyroscopeRecord.start(delay));
     }
 
     @ReactMethod
     public void stopGyroscope() {
-		mGyroscopeRecord.stop();
+		if (mGyroscopeRecord == null)
+			mGyroscopeRecord.stop();
     }
 
     @ReactMethod
     public int startMagnetometer(int delay) {
-    	mMagnetometerRecord = new MagnetometerRecord(mReactContext);
+		if (mMagnetometerRecord == null)
+			mMagnetometerRecord = new MagnetometerRecord(mReactContext);
 		return (mMagnetometerRecord.start(delay));
     }
 
     @ReactMethod
     public void stopMagnetometer() {
-		mMagnetometerRecord.stop();
+		if (mMagnetometerRecord == null)
+			mMagnetometerRecord.stop();
     }
 
     @ReactMethod
     public int startStepCounter(int delay) {
-    	mStepCounterRecord = new StepCounterRecord(mReactContext);
+		if (mStepCounterRecord == null)
+			mStepCounterRecord = new StepCounterRecord(mReactContext);
 		return (mStepCounterRecord.start(delay));
     }
 
     @ReactMethod
     public void stopStepCounter() {
-		mStepCounterRecord.stop();
+		if (mStepCounterRecord == null)
+			mStepCounterRecord.stop();
     }
 
     @ReactMethod
     public int startThermometer(int delay) {
-    	mThermometerRecord = new ThermometerRecord(mReactContext);
+		if (mThermometerRecord == null)
+			mThermometerRecord = new ThermometerRecord(mReactContext);
 		return (mThermometerRecord.start(delay));
     }
 
     @ReactMethod
     public void stopThermometer() {
-		mThermometerRecord.stop();
+		if (mThermometerRecord == null)
+			mThermometerRecord.stop();
     }
 
     @ReactMethod
     public int startMotionValue(int delay) {
-    	mMotionValueRecord = new MotionValueRecord(mReactContext);
+		if (mMotionValueRecord == null)
+			mMotionValueRecord = new MotionValueRecord(mReactContext);
 		return (mMotionValueRecord.start(delay));
     }
 
     @ReactMethod
     public void stopMotionValue() {
-		mMotionValueRecord.stop();
+		if (mMotionValueRecord == null)
+			mMotionValueRecord.stop();
     }
 
 
