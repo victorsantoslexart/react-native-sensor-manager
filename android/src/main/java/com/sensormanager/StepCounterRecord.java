@@ -30,13 +30,19 @@ public class StepCounterRecord implements SensorEventListener {
 	private Arguments mArguments;
 
 
-    public StepCounterRecord(ReactApplicationContext reactContext, int delay) {
-		this.delay = delay;
+    public StepCounterRecord(ReactApplicationContext reactContext) {
         mSensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
-        mStepCounter = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        mSensorManager.registerListener(this, mStepCounter, SensorManager.SENSOR_DELAY_FASTEST);
 		mReactContext = reactContext;
     }
+
+	public int start(int delay) {
+		this.delay = delay;
+        if ((mStepCounter = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)) != null) {
+			mSensorManager.registerListener(this, mStepCounter, SensorManager.SENSOR_DELAY_FASTEST);
+			return (1);
+		}
+		return (0);
+	}
 
     public void stop() {
         mSensorManager.unregisterListener(this);

@@ -30,13 +30,19 @@ public class GyroscopeRecord implements SensorEventListener {
 	private Arguments mArguments;
 
 
-    public GyroscopeRecord(ReactApplicationContext reactContext, int delay) {
-		this.delay = delay;
+    public GyroscopeRecord(ReactApplicationContext reactContext) {
         mSensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
-        mGyroscope = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
-        mSensorManager.registerListener(this, mGyroscope, SensorManager.SENSOR_DELAY_FASTEST);
 		mReactContext = reactContext;
     }
+
+	public int start(int delay) {
+		this.delay = delay;
+        if ((mGyroscope = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)) != null) {
+			mSensorManager.registerListener(this, mGyroscope, SensorManager.SENSOR_DELAY_FASTEST);
+			return (1);
+		}
+		return (0);
+	}
 
     public void stop() {
         mSensorManager.unregisterListener(this);

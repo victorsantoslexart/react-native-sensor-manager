@@ -31,8 +31,9 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void startAccelerometer(int delay) {
-    	mAccelerometerRecord = new AccelerometerRecord(mReactContext, delay);
+    public int startAccelerometer(int delay) {
+    	mAccelerometerRecord = new AccelerometerRecord(mReactContext);
+		return (mAccelerometerRecord.start(delay));
     }
 
     @ReactMethod
@@ -41,8 +42,9 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void startGyroscope(int delay) {
-    	mGyroscopeRecord = new GyroscopeRecord(mReactContext, delay);
+    public int startGyroscope(int delay) {
+    	mGyroscopeRecord = new GyroscopeRecord(mReactContext);
+		return (mGyroscopeRecord.start(delay));
     }
 
     @ReactMethod
@@ -62,8 +64,9 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void startStepCounter(int delay) {
-    	mStepCounterRecord = new StepCounterRecord(mReactContext, delay);
+    public int startStepCounter(int delay) {
+    	mStepCounterRecord = new StepCounterRecord(mReactContext);
+		return (mStepCounterRecord.start(delay));
     }
 
     @ReactMethod
@@ -83,8 +86,9 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void startMotionValue(int delay) {
-    	mMotionValueRecord = new MotionValueRecord(mReactContext, delay);
+    public int startMotionValue(int delay) {
+    	mMotionValueRecord = new MotionValueRecord(mReactContext);
+		return (mMotionValueRecord.start(delay));
     }
 
     @ReactMethod

@@ -39,10 +39,9 @@ public class MagnetometerRecord implements SensorEventListener {
 		this.delay = delay;
 		if ((mMagnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)) != null) {
 			mSensorManager.registerListener(this, mMagnetometer, SensorManager.SENSOR_DELAY_FASTEST);
-		} else {
-			return (0);
+			return (1);
 		}
-		return (1);
+		return (0);
 	}
 
     public void stop() {

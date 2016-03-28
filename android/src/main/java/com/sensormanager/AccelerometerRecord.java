@@ -30,13 +30,19 @@ public class AccelerometerRecord implements SensorEventListener {
 	private Arguments mArguments;
 
 
-    public AccelerometerRecord(ReactApplicationContext reactContext, int delay) {
-		this.delay = delay;
+    public AccelerometerRecord(ReactApplicationContext reactContext) {
         mSensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_FASTEST);
 		mReactContext = reactContext;
     }
+
+	public int start(int delay) {
+		this.delay = delay;
+        if ((mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)) != null) {
+			mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_FASTEST);
+			return (1);
+		}
+		return (0);
+	}
 
     public void stop() {
         mSensorManager.unregisterListener(this);
