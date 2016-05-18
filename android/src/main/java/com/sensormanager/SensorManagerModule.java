@@ -40,7 +40,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void stopAccelerometer() {
-		if (mAccelerometerRecord == null)
+		if (mAccelerometerRecord != null)
 			mAccelerometerRecord.stop();
     }
 
@@ -53,7 +53,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void stopGyroscope() {
-		if (mGyroscopeRecord == null)
+		if (mGyroscopeRecord != null)
 			mGyroscopeRecord.stop();
     }
 
@@ -66,7 +66,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void stopMagnetometer() {
-		if (mMagnetometerRecord == null)
+		if (mMagnetometerRecord != null)
 			mMagnetometerRecord.stop();
     }
 
@@ -79,7 +79,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void stopStepCounter() {
-		if (mStepCounterRecord == null)
+		if (mStepCounterRecord != null)
 			mStepCounterRecord.stop();
     }
 
@@ -92,7 +92,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void stopThermometer() {
-		if (mThermometerRecord == null)
+		if (mThermometerRecord != null)
 			mThermometerRecord.stop();
     }
 
@@ -105,7 +105,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void stopMotionValue() {
-		if (mMotionValueRecord == null)
+		if (mMotionValueRecord != null)
 			mMotionValueRecord.stop();
     }
 
@@ -118,7 +118,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void stopProximity() {
-		if (mMotionValueRecord == null)
+		if (mMotionValueRecord != null)
 			mProximityRecord.stop();
     }
 
