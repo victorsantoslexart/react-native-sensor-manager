@@ -18,6 +18,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 	private ThermometerRecord		mThermometerRecord = null;
 	private MotionValueRecord		mMotionValueRecord = null;
 	private ProximityRecord			mProximityRecord = null;
+  private LightSensorRecord   mLightSensorRecord = null;
 
 	private ReactApplicationContext	mReactContext;
 
@@ -120,6 +121,19 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
     public void stopProximity() {
 		if (mMotionValueRecord != null)
 			mProximityRecord.stop();
+    }
+
+    @ReactMethod
+    public int startLightSensor(int delay) {
+      if(mLightSensorRecord == null)
+        mLightSensorRecord = new LightSensorRecord(mReactContext);
+      return (mLightSensorRecord.start(delay));
+    }
+
+    @ReactMethod
+    public int stopLightSensor() {
+      if(mLightSensorRecord != null)
+        mLightSensorRecord.stop();
     }
 
 	/*
