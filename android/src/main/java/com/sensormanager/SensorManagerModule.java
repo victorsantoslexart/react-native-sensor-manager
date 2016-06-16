@@ -131,7 +131,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public int stopLightSensor() {
+    public void stopLightSensor() {
       if(mLightSensorRecord != null)
         mLightSensorRecord.stop();
     }
