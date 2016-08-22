@@ -49,8 +49,8 @@ public class ProximityRecord implements SensorEventListener {
 
     private void sendEvent(String eventName, @Nullable WritableMap params) {
         try {
-            mReactContext 
-                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class) 
+            mReactContext
+                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
                 .emit(eventName, params);
         } catch (RuntimeException e) {
             Log.e("ERROR", "java.lang.RuntimeException: Trying to invoke JS before CatalystInstance has been set!");
@@ -61,17 +61,25 @@ public class ProximityRecord implements SensorEventListener {
     public void onSensorChanged(SensorEvent sensorEvent) {
         Sensor mySensor = sensorEvent.sensor;
         WritableMap map = mArguments.createMap();
+        double maxRange = mProximity.getMaximumRange();
 
         if (mySensor.getType() == Sensor.TYPE_PROXIMITY) {
             long curTime = System.currentTimeMillis();
-            i++;
+
             if ((curTime - lastUpdate) > delay) {
                 boolean isNear = false;
-                i = 0;
-                if (sensorEvent.values[0] < mProximity.getMaximumRange()) {
-                    isNear = true;
-                }
-                map.putBoolean("isNear", isNear);
+                double value = sensorEvent.values[0];
+
+                // NOTE: Android devices vary in the values they provide. A reasonably
+                // safe rule of thumb is that if the value is less than the maximum range
+                // of the sensor, then the phone is reporting that something is "near".
+                // See https://developer.android.com/guide/topics/sensors/sensors_position.html
+                // for more details. We also provide the raw value and maximum range in case
+                // those are needed.
+                map.putBoolean("isNear", value < maxRange);
+                map.putDouble("value", value);
+                map.putDouble("maxRange", maxRange);
+
                 sendEvent("Proximity", map);
                 lastUpdate = curTime;
             }

@@ -112,14 +112,14 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public int startProximity(int delay) {
-		if (mMotionValueRecord == null)
+		if (mProximityRecord == null)
 			mProximityRecord = new ProximityRecord(mReactContext);
 		return (mProximityRecord.start(delay));
     }
 
     @ReactMethod
     public void stopProximity() {
-		if (mMotionValueRecord != null)
+		if (mProximityRecord != null)
 			mProximityRecord.stop();
     }
 

@@ -169,3 +169,17 @@ DeviceEventEmitter.addListener('LightSensor', function (data) {
 });
 mSensorManager.stopLightSensor();
 ```
+
+
+### Proximity Sensor
+```js
+mSensorManager.startProximity(100);
+DeviceEventEmitter.addListener('Proximity', function (data) {
+  /**
+  * data.isNear: [Boolean] A flag representing whether something is near the screen.
+  * data.value: [Number] The raw value returned by the sensor (usually distance in cm).
+  * data.maxRange: [Number] The maximum range of the sensor.
+  **/
+});
+mSensorManager.stopProximity();
+```
