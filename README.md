@@ -137,6 +137,19 @@ DeviceEventEmitter.addListener('Magnetometer', function (data) {
 mSensorManager.stopMagnetometer();
 ```
 
+### Orientation
+```js
+mSensorManager.startOrientation(100);
+DeviceEventEmitter.addListener('Orientation', function (data) {
+  /**
+  * data.azimuth
+  * data.pitch
+  * data.roll
+  **/
+});
+mSensorManager.stopOrientation();
+```
+
 ### Step Counter
 ```js
 mSensorManager.startStepCounter(1000);
