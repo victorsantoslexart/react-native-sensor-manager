@@ -34,7 +34,7 @@ dependencies {
 }
 ```
 
-* register module (in MainActivity.java)
+* register module (in MainApplication.java)
 
   * For react-native below 0.19.0 (use `cat ./node_modules/react-native/package.json | grep version`)
 
