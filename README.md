@@ -94,13 +94,13 @@ import React, {
   DeviceEventEmitter // will emit events that you can listen to
 } from 'react-native';
 
-import { mSensorManager } from 'NativeModules';
+import { SensorManager } from 'NativeModules';
 ```
 
 
 ### Accelerometer
 ```js
-mSensorManager.startAccelerometer(100); // To start the accelerometer with a minimum delay of 100ms between events.
+SensorManager.startAccelerometer(100); // To start the accelerometer with a minimum delay of 100ms between events.
 DeviceEventEmitter.addListener('Accelerometer', function (data) {
   /**
   * data.x
@@ -108,7 +108,7 @@ DeviceEventEmitter.addListener('Accelerometer', function (data) {
   * data.z
   **/
 });
-mSensorManager.stopAccelerometer();
+SensorManager.stopAccelerometer();
 ```
 
 ### Gyroscope
@@ -120,13 +120,13 @@ DeviceEventEmitter.addListener('Gyroscope', function (data) {
   * data.z
   **/
 });
-mSensorManager.startGyroscope(100);
-mSensorManager.stopGyroscope();
+SensorManager.startGyroscope(100);
+SensorManager.stopGyroscope();
 ```
 
 ### Magnetometer
 ```js
-mSensorManager.startMagnetometer(100);
+SensorManager.startMagnetometer(100);
 DeviceEventEmitter.addListener('Magnetometer', function (data) {
   /**
   * data.x
@@ -134,12 +134,12 @@ DeviceEventEmitter.addListener('Magnetometer', function (data) {
   * data.z
   **/
 });
-mSensorManager.stopMagnetometer();
+SensorManager.stopMagnetometer();
 ```
 
 ### Orientation
 ```js
-mSensorManager.startOrientation(100);
+SensorManager.startOrientation(100);
 DeviceEventEmitter.addListener('Orientation', function (data) {
   /**
   * data.azimuth
@@ -147,46 +147,46 @@ DeviceEventEmitter.addListener('Orientation', function (data) {
   * data.roll
   **/
 });
-mSensorManager.stopOrientation();
+SensorManager.stopOrientation();
 ```
 
 ### Step Counter
 ```js
-mSensorManager.startStepCounter(1000);
+SensorManager.startStepCounter(1000);
 DeviceEventEmitter.addListener('StepCounter', function (data) {
   /**
   * data.steps
   **/
 });
-mSensorManager.stopStepCounter();
+SensorManager.stopStepCounter();
 ```
 
 ### Thermometer
 ```js
-mSensorManager.startThermometer(1000);
+SensorManager.startThermometer(1000);
 DeviceEventEmitter.addListener('Thermometer', function (data) {
   /**
   * data.temp
   **/
 });
-mSensorManager.stopThermometer();
+SensorManager.stopThermometer();
 ```
 
 ### LightSensor
 ```js
-mSensorManager.startLightSensor(100);
+SensorManager.startLightSensor(100);
 DeviceEventEmitter.addListener('LightSensor', function (data) {
   /**
   * data.light
   **/
 });
-mSensorManager.stopLightSensor();
+SensorManager.stopLightSensor();
 ```
 
 
 ### Proximity Sensor
 ```js
-mSensorManager.startProximity(100);
+SensorManager.startProximity(100);
 DeviceEventEmitter.addListener('Proximity', function (data) {
   /**
   * data.isNear: [Boolean] A flag representing whether something is near the screen.
@@ -194,5 +194,5 @@ DeviceEventEmitter.addListener('Proximity', function (data) {
   * data.maxRange: [Number] The maximum range of the sensor.
   **/
 });
-mSensorManager.stopProximity();
+SensorManager.stopProximity();
 ```
