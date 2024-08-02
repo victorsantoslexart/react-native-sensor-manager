@@ -99,10 +99,14 @@ Api
 ### Setup
 ```js
 import React, {
+  NativeModules,
   DeviceEventEmitter // will emit events that you can listen to
 } from 'react-native';
 
-import { SensorManager } from 'NativeModules';
+function Component() {
+  const { SensorManager } = NativeModules;
+  // ...
+}
 ```
 
 
