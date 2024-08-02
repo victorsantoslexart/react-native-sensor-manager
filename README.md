@@ -15,6 +15,7 @@ Add it to your project
 ### Option: Manually (try it if an runtime error occurs after `nrpm link`)
 
 **Dont need manual link anymore**
+
 <s>Make alterations to the following files:
 
 * `android/settings.gradle`
