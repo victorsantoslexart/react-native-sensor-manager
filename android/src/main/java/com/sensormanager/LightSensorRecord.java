@@ -1,22 +1,17 @@
 package com.sensormanager;
 
-import android.os.Bundle;
+import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
+
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
-import android.support.annotation.Nullable;
-
-import java.io.*;
-import java.util.Date;
-import java.util.Timer;
-
-import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.ReactContext;
-import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
-import com.facebook.react.bridge.ReactApplicationContext;
+import androidx.annotation.Nullable;
 
 public class LightSensorRecord implements SensorEventListener {
 
@@ -30,7 +25,7 @@ public class LightSensorRecord implements SensorEventListener {
     private Arguments mArguments;
 
     public LightSensorRecord(ReactApplicationContext reactContext) {
-        mSensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
+        mSensorManager = (SensorManager) reactContext.getSystemService(reactContext.SENSOR_SERVICE);
         mReactContext = reactContext;
     }
 
@@ -47,8 +42,7 @@ public class LightSensorRecord implements SensorEventListener {
         mSensorManager.unregisterListener(this);
     }
 
-    private void sendEvent(String eventName, @Nullable WritableMap params)
-    {
+    private void sendEvent(String eventName, @Nullable WritableMap params) {
         try {
             mReactContext
                     .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)

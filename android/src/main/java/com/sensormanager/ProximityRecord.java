@@ -1,22 +1,17 @@
 package com.sensormanager;
 
-import android.os.Bundle;
+import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
+
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
-import android.support.annotation.Nullable;
-
-import java.io.*;
-import java.util.Date;
-import java.util.Timer;
-
-import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.ReactContext;
-import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
-import com.facebook.react.bridge.ReactApplicationContext;
+import androidx.annotation.Nullable;
 
 public class ProximityRecord implements SensorEventListener {
 
@@ -30,11 +25,11 @@ public class ProximityRecord implements SensorEventListener {
     private Arguments mArguments;
 
     public ProximityRecord(ReactApplicationContext reactContext) {
-        mSensorManager = (SensorManager)reactContext.getSystemService(reactContext.SENSOR_SERVICE);
+        mSensorManager = (SensorManager) reactContext.getSystemService(reactContext.SENSOR_SERVICE);
         mReactContext = reactContext;
     }
 
-	public int start(int delay) {
+    public int start(int delay) {
         this.delay = delay;
         if ((mProximity = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)) != null) {
             mSensorManager.registerListener(this, mProximity, SensorManager.SENSOR_DELAY_FASTEST);
@@ -50,8 +45,8 @@ public class ProximityRecord implements SensorEventListener {
     private void sendEvent(String eventName, @Nullable WritableMap params) {
         try {
             mReactContext
-                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, params);
+                    .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                    .emit(eventName, params);
         } catch (RuntimeException e) {
             Log.e("ERROR", "java.lang.RuntimeException: Trying to invoke JS before CatalystInstance has been set!");
         }
