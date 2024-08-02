@@ -6,7 +6,7 @@ Wrapper for react-native. Accelerometer, Gyroscope, Magnetometer, Orientation, S
 Add it to your project
 -------------------------
 
-`$ npm i react-native-sensor-manager --save`
+`$ npm i @victorsantoslexart/react-native-sensor-manager --save`
 
 ### Option: With [`rnpm`](https://github.com/rnpm/rnpm)
 
@@ -75,14 +75,22 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
 import com.sensormanager.SensorManagerPackage; // <------ add package
 
 public class MainApplication extends Application implements ReactApplication {
-   // ...
+    // ...
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-        new MainReactPackage(), // <---- add comma
+        // new MainReactPackage(), // <---- add comma
         new SensorManagerPackage() // <---------- add package
       );
     }
+    // or
+    @Override
+      protected List<ReactPackage> getPackages() {
+        @SuppressWarnings("UnnecessaryLocalVariable")
+        List<ReactPackage> packages = new PackageList(this).getPackages();
+        packages.add(new SensorManagerPackage()); // <---------- add package
+        return packages;
+      }
 ```
 
 Api
